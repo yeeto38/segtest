@@ -1,0 +1,6 @@
+<testsuites name="results">
+  <testsuite name="all" package="all">
+    <property name="random_seed" value="1755730047" />
+    <testcase name="test_Timer" classname="test_Timer" file="/Users/jasonhuang/Documents/very/segtest/test_Timer.py" lineno="5" time="26.028928995132446" sim_time_ns="120000000.001" ratio_time="4610254.998330537" />
+  </testsuite>
+</testsuites>

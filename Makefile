@@ -15,9 +15,13 @@ TOPLEVEL_LANG ?= verilog
 # MODULE = test_SevenSeg
 
 # Timer things
+VERILOG_SOURCES += sevensegin.v
+VERILOG_SOURCES += SegDecode.v
 VERILOG_SOURCES += Timer.v
+VERILOG_SOURCES += SevenSeg.v
+VERILOG_SOURCES += TimerDecode.v
 
-TOPLEVEL = Timer
+TOPLEVEL = sevensegin
 MODULE = test_Timer
 
 # Verilator simulation args - enable tracing

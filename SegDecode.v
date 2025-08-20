@@ -1,3 +1,4 @@
+// converts [SEL, A, B, C, D, E, F, G, DP] to seg readable
 module SegDecode #(
 	)
 (

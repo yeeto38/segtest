@@ -1,8 +1,9 @@
-module SegDecode #(
+module TimerDecode #(
+	NUMCELLS = 4
 	)
 (
-	input [16:0] i, // goes up to 131072, input is in ms, so 131s
-	output [31:0] out
+	input [4 * NUMCELLS - 1:0] in,
+	output [8 * NUMCELLS - 1:0] out
 );
 	localparam  ZERO = 8'b11111100;
 	localparam   ONE = 8'b01100000;
@@ -15,7 +16,27 @@ module SegDecode #(
 	localparam EIGHT = 8'b11111110;
 	localparam  NINE = 8'b11110110;
 
-// i: [SEL, A, B, C, D, E, F, G, DP]
-assign out={i[11],i[7],i[2],i[10],i[9],i[6],i[8],i[1],i[5],i[0],i[4],i[3]};
+	genvar i;
+	generate
+		for (i = 0; i < NUMCELLS; i = i + 1) begin: convert_bten
+			reg [7:0] digit;
+			always @* begin
+				case (in[4 * (NUMCELLS - i) - 1 : 4 * (NUMCELLS - i - 1)])
+					4'd0: digit = ZERO;
+					4'd1: digit = ONE;
+					4'd2: digit = TWO;
+					4'd3: digit = THREE;
+					4'd4: digit = FOUR;
+					4'd5: digit = FIVE;
+					4'd6: digit = SIX;
+					4'd7: digit = SEVEN;
+					4'd8: digit = EIGHT;
+					4'd9: digit = NINE;
+					default: digit = 8'b00000000;
+				endcase
+			end
+			assign out[8 * (NUMCELLS - i) - 1 : 8 * (NUMCELLS - i - 1)] = digit;
+		end
+	endgenerate
 
 endmodule
