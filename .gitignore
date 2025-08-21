@@ -2,3 +2,11 @@ dump.fst
 results.xml
 __pycache__
 sim_build
+.DS_Store
+ttester.cache/
+ttester.hw/
+ttester.runs/
+ttester.srcs/
+ttester.xpr
+
+
