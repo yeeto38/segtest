@@ -15,7 +15,7 @@ module Timer#(
 	integer i;
 	always @(posedge clock) begin
 		if (~rst) begin
-			if (buffer == CLOCKSPEED/100 - 1) begin // 10ms, 0.01s precision
+			if (buffer == CLOCKSPEED/20 - 1) begin // 10ms, 0.01s precision
 				digits[0] <= digits[0] + 1;
 				for (i = 0; i < NUMCELLS - 1; i = i + 1) begin // if current digit is 9 and i am adding 1
 					if (digits[i] == 4'b1001) begin // switch this digit to 0 and next digit adds 1
