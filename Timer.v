@@ -1,8 +1,8 @@
 // Assumes 12MHz clock speed (can be changed)
 // Outputs 1ms pulse that resets on rst
 module Timer#(
-		parameter CLOCKSPEED = 12000000,
-		// parameter CLOCKSPEED = 10000000,
+		// parameter CLOCKSPEED = 12000000,
+		parameter CLOCKSPEED = 10000000,
 		parameter NUMCELLS = 4
 		)
 	(
@@ -37,7 +37,7 @@ module Timer#(
 			if (buffer == CLOCKSPEED/100 - 1) begin // 10ms, 0.01s precision
 				digits[0] <= digits[0] + 1;
 				for (i = 0; i < NUMCELLS; i = i + 1) begin // if current digit is 9 and i am adding 1
-					if (digits[i] == 4'b1010) begin // switch this digit to 0 and next digit adds 1
+					if (digits[i] == 4'b1001) begin // switch this digit to 0 and next digit adds 1
 						digits[i] <= 4'b0000;
 						if (i != NUMCELLS) begin
 							digits[i + 1] <= digits[i + 1] + 1;
