@@ -7,6 +7,7 @@ module Timer#(
 		)
 	(
 	 input rst,
+	 input pause,
 	 input clock,
 	 output reg [4 * NUMCELLS - 1:0] elapsed
 	);
@@ -14,10 +15,11 @@ module Timer#(
 	reg ting = 0;
 	reg [3:0] digits [NUMCELLS - 1:0]; // 4 bit for each digit (base10)
 	integer i;
+	always @(posedge pause) begin 
+		ting <= ~ting;
+	end
+
 	always @(posedge clock) begin
-		if (pause) begin
-			ting <= ~ting;
-		end
 		if (~rst) begin
 			if (buffer == CLOCKSPEED/100 - 1) begin // 10ms, 0.01s precision
 				digits[0] <= digits[0] + 1;
@@ -31,7 +33,7 @@ module Timer#(
 			end 
 			else begin
 				if (~ting) begin
-					buffer <= buffer + 1;s
+					buffer <= buffer + 1;
 				end
 			end
 		end
