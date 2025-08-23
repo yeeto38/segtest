@@ -14,5 +14,5 @@ async def test_Timer(dut):
 # for _ in range(1000):
 #		await RisingEdge(dut.clock)
 # dut.rst.value=0;
-	await Timer(200, units="ms")
+	await Timer(1000, units="ms")
 	#dut._log.info("Finished waiting")

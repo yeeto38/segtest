@@ -3,13 +3,14 @@ module sevensegin #(
 		)
 	(
 	 input rst,
+	 input pause,
 	 input clock, //12 mHZ
 	 output [11:0] seg 
 	);
 wire [8 * NUMCELLS - 1:0] decodedtimer;
 wire [4 * NUMCELLS - 1:0] toutsig;
 wire [11:0] sig;
-Timer t (.rst(rst), .clock(clock), .elapsed(toutsig));
+Timer t (.rst(rst), .pause(pause), .clock(clock), .elapsed(toutsig));
 TimerDecode timeout (.in(toutsig), .out(decodedtimer));
 SevenSeg suibian (.clock(clock), .cellvalin(decodedtimer), .sig(sig));
 

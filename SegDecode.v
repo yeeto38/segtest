@@ -18,7 +18,7 @@ module SegDecode #(
 	*/
 );
 
-// i: [SEL, A, B, C, D, E, F, G, DP]
+// i: [[1, 2, 3, 4], A, B, C, D, E, F, G, DP]
 assign out={i[11],i[7],i[2],i[10],i[9],i[6],i[8],i[1],i[5],i[0],i[4],i[3]};
 
 endmodule

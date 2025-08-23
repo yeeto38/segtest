@@ -8,7 +8,7 @@ set_property -dict { PACKAGE_PIN L1    IOSTANDARD LVCMOS33 } [get_ports { seg[7]
 set_property -dict { PACKAGE_PIN L2    IOSTANDARD LVCMOS33 } [get_ports { seg[8] }]; #IO_L5N_T0_AD13N_35 Sch=pio[14]
 set_property -dict { PACKAGE_PIN M1    IOSTANDARD LVCMOS33 } [get_ports { seg[6] }]; #IO_L9N_T1_DQS_AD7N_35 Sch=pio[17]
 set_property -dict { PACKAGE_PIN W5    IOSTANDARD LVCMOS33 } [get_ports { seg[4] }]; #IO_L12P_T1_MRCC_34 Sch=pio[36]
-set_property -dict { PACKAGE_PIN V4    IOSTANDARD LVCMOS33 } [get_ports { seg[5] }]; 
+set_property -dict { PACKAGE_PIN V4    IOSTANDARD LVCMOS33 } [get_ports { seg[5] }]; #PIO37
 set_property -dict { PACKAGE_PIN U2    IOSTANDARD LVCMOS33 } [get_ports { seg[0] }]; #IO_L9N_T1_DQS_34 Sch=pio[42]
 set_property -dict { PACKAGE_PIN W6    IOSTANDARD LVCMOS33 } [get_ports { seg[1] }]; #IO_L13N_T2_MRCC_34 Sch=pio[43]
 set_property -dict { PACKAGE_PIN U3    IOSTANDARD LVCMOS33 } [get_ports { seg[2] }]; #IO_L9P_T1_DQS_34 Sch=pio[44]
@@ -18,3 +18,4 @@ set_property PULLDOWN TRUE [get_ports seg[8]]
 set_property PULLDOWN TRUE [get_ports seg[7]]
 set_property PULLDOWN TRUE [get_ports seg[5]]
 set_property -dict { PACKAGE_PIN A18   IOSTANDARD LVCMOS33 } [get_ports { rst }];
+set_property -dict { PACKAGE_PIN B18   IOSTANDARD LVCMOS33 } [get_ports { pause }];
