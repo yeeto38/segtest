@@ -14,19 +14,34 @@ module Timer#(
 	reg [31:0] buffer = 0;
 	reg ting = 0;
 	reg [3:0] digits [NUMCELLS - 1:0]; // 4 bit for each digit (base10)
+	reg [31:0] clockbuffer = 0;
+	reg pprev, pedge;
 	integer i;
-	always @(posedge pause) begin 
-		ting <= ~ting;
+
+	always @(posedge clock) begin
+		pprev <= pause;
+		pedge <= pause & ~pprev;
 	end
 
 	always @(posedge clock) begin
+		if (clockbuffer > CLOCKSPEED / 1000 - 1) begin
+			if (pedge) begin
+				clockbuffer <= 0;
+				ting <= ~ting;
+			end
+		end
+		else begin
+			clockbuffer <= clockbuffer + 1;
+		end
 		if (~rst) begin
 			if (buffer == CLOCKSPEED/100 - 1) begin // 10ms, 0.01s precision
 				digits[0] <= digits[0] + 1;
-				for (i = 0; i < NUMCELLS - 1; i = i + 1) begin // if current digit is 9 and i am adding 1
+				for (i = 0; i < NUMCELLS; i = i + 1) begin // if current digit is 9 and i am adding 1
 					if (digits[i] == 4'b1010) begin // switch this digit to 0 and next digit adds 1
 						digits[i] <= 4'b0000;
-						digits[i + 1] <= digits[i + 1] + 1;
+						if (i != NUMCELLS) begin
+							digits[i + 1] <= digits[i + 1] + 1;
+						end
 					end
 				end
 				buffer <= 0;
