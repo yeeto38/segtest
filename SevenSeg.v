@@ -1,9 +1,9 @@
 // 1->A... DP->8 (DIG1->9 DIG2->10...)
 
 module SevenSeg #(
-		// parameter CLOCKSPEED = 12000000,
+		parameter CLOCKSPEED = 12000000,
 		// parameter CLOCKSPEED = 10000000,
-		parameter CLOCKSPEED = 10000,
+		// parameter CLOCKSPEED = 10000,
 		parameter NUMCELLS = 4
 		)
 	(
