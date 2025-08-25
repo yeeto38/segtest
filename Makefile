@@ -36,3 +36,6 @@ $(info SIM_ARGS is: $(SIM_ARGS))
 
 # Include cocotb's simulation makefile
 include $(shell cocotb-config --makefiles)/Makefile.sim
+
+g:sim
+	gtkwave dump.fst
